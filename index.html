@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Guía de entrevista · Proceso de cobranza, sector San Pedro Sula</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div>
+        <p class="eyebrow">Maestría en Administración de Proyectos · UNITEC</p>
+        <h1>Guía de entrevista semiestructurada</h1>
+        <p class="sub">Proceso de cobranza del sector San Pedro Sula</p>
+      </div>
+      <div class="progress" aria-label="Progreso de la entrevista">
+        <span id="progress-text">0 / 23 respondidas</span>
+        <div class="bar"><div id="progress-bar"></div></div>
+        <span id="save-status" class="save-status">Sin cambios</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <form id="entrevista" novalidate>
+      <!-- I. DATOS GENERALES -->
+      <section class="card" id="sec-datos">
+        <h2><span class="num">I</span> Datos generales y consentimiento</h2>
+
+        <div class="grid">
+          <label>Código anónimo del participante <span class="req">*</span>
+            <input type="text" name="codigo" required placeholder="Ej.: P-01" autocomplete="off">
+          </label>
+          <label>Fecha
+            <input type="date" name="fecha">
+          </label>
+          <label>Entrevistador(a)
+            <input type="text" name="entrevistador" autocomplete="off">
+          </label>
+        </div>
+
+        <fieldset class="chips">
+          <legend>Cargo</legend>
+          <label><input type="radio" name="cargo" value="Líder de Cobro Operativo"> Líder de Cobro Operativo</label>
+          <label><input type="radio" name="cargo" value="Analista"> Analista</label>
+          <label><input type="radio" name="cargo" value="Back Office"> Back Office</label>
+          <label><input type="radio" name="cargo" value="Gestor de campo"> Gestor de campo</label>
+        </fieldset>
+        <p class="hint">Como el Líder de Cobro Operativo, el Analista y el Back Office son una sola persona cada uno, en el análisis sus respuestas se reportarán en conjunto como «personal de coordinación», para no identificarlos.</p>
+
+        <div class="grid">
+          <label>Antigüedad en el puesto
+            <input type="text" name="antiguedad" placeholder="Ej.: 3 años" autocomplete="off">
+          </label>
+          <fieldset class="chips inline">
+            <legend>Modalidad</legend>
+            <label><input type="radio" name="modalidad" value="Presencial"> Presencial</label>
+            <label><input type="radio" name="modalidad" value="Virtual"> Virtual</label>
+          </fieldset>
+          <label>Hora de inicio
+            <input type="time" name="hora_inicio">
+          </label>
+          <label>Hora de fin
+            <input type="time" name="hora_fin">
+          </label>
+        </div>
+
+        <div class="callout">
+          <h3>Presentación al participante</h3>
+          <p>Esta entrevista forma parte de una investigación académica de la Maestría en Administración de Proyectos de UNITEC sobre el proceso de cobranza del sector San Pedro Sula. Durará aproximadamente entre 45 y 60 minutos. La participación es voluntaria y las respuestas se analizarán sin identificar a las personas; la información se usará solo con fines académicos y, si se autoriza la grabación, el audio se eliminará al concluir el estudio. Puede omitir una pregunta o interrumpir la entrevista. No se solicitarán datos personales de clientes ni ubicaciones específicas de zonas restringidas.</p>
+        </div>
+
+        <div class="grid">
+          <fieldset class="chips inline">
+            <legend>¿Acepta participar? <span class="req">*</span></legend>
+            <label><input type="radio" name="acepta" value="Sí" required> Sí</label>
+            <label><input type="radio" name="acepta" value="No"> No</label>
+          </fieldset>
+          <fieldset class="chips inline">
+            <legend>¿Autoriza la grabación de audio?</legend>
+            <label><input type="radio" name="grabacion" value="Sí"> Sí</label>
+            <label><input type="radio" name="grabacion" value="No"> No</label>
+          </fieldset>
+        </div>
+        <p id="no-consent" class="warning" hidden>El participante no aceptó participar: no se deben registrar respuestas. Puede guardar solo los datos generales o iniciar una nueva entrevista.</p>
+      </section>
+
+      <!-- II. PREGUNTAS (se generan desde app.js) -->
+      <div id="preguntas"></div>
+
+      <!-- III. CIERRE -->
+      <section class="card" id="sec-cierre">
+        <h2><span class="num">III</span> Cierre</h2>
+        <label class="block">¿Desea agregar algún aspecto importante sobre la gestión de cobranza que no hayamos abordado?
+          <textarea name="cierre_adicional" rows="4"></textarea>
+        </label>
+        <p class="hint">Agradecer la participación y recordar que la información es confidencial.</p>
+        <label class="block">Observaciones del entrevistador
+          <textarea name="observaciones" rows="4"></textarea>
+        </label>
+        <p class="nota"><strong>Nota metodológica:</strong> las preguntas 1 a 18 corresponden a los objetivos específicos 1 a 3 y a las dimensiones de la matriz de operacionalización (Anexo D, Tabla D.2); las preguntas 19 a 23 recogen insumos para el diseño de la propuesta (objetivo específico 4) y no forman parte del diagnóstico. Las percepciones recogidas no sustituyen la verificación documental de los indicadores.</p>
+      </section>
+    </form>
+  </main>
+
+  <footer class="actions" aria-label="Acciones">
+    <div class="actions-inner">
+      <button type="button" id="btn-enviar" class="primary">Enviar respuestas</button>
+      <button type="button" id="btn-json">Descargar (.json)</button>
+      <button type="button" id="btn-csv">Descargar (.csv)</button>
+      <button type="button" id="btn-imprimir">Imprimir / PDF</button>
+      <label class="file-btn">Abrir guardada
+        <input type="file" id="btn-importar" accept=".json,application/json">
+      </label>
+      <button type="button" id="btn-nueva" class="danger">Nueva entrevista</button>
+    </div>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
